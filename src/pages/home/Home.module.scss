@@ -1,0 +1,214 @@
+// breakpoints for custom styles
+$xl: 1024px;
+$md: 768px;
+
+.main {
+  @apply flex min-h-screen items-center justify-center bg-slate-100 font-plus-jakarta-sans;
+
+  .box {
+    @apply flex flex-col bg-white shadow-xl md:flex-row md:rounded-3xl;
+    width: 57rem;
+    @media (width < $xl) {
+      width: 95%;
+    }
+    @media (width < $md) {
+      width: 100%;
+    }
+
+    .formContainer {
+      @apply w-full p-5 sm:p-9 md:w-1/2;
+
+      .header {
+        @apply flex flex-col items-start justify-between gap-y-3 sm:flex-row sm:items-center;
+
+        .heroText {
+          @apply text-xl font-semibold text-slate-900;
+        }
+
+        button {
+          @apply text-sm font-medium text-slate-700 underline transition duration-300 hover:text-slate-900;
+        }
+      }
+
+      .form {
+        @apply mt-7;
+
+        .fields {
+          @apply space-y-5;
+
+          .field {
+            .label {
+              @apply mb-2 block text-slate-700;
+              font-size: 0.95rem;
+            }
+
+            .input {
+              @apply flex cursor-pointer rounded border border-slate-500 transition duration-300;
+
+              .badge {
+                @apply bg-slate-100 px-3 py-2 font-semibold text-slate-700 transition duration-300;
+
+                &.rounded_l {
+                  @apply rounded-l;
+                }
+
+                &.rounded_r {
+                  @apply rounded-r;
+                }
+              }
+
+              input {
+                @apply w-full flex-grow cursor-pointer rounded px-3 font-semibold text-slate-900 outline-none;
+              }
+
+              &:hover,
+              &:focus-within {
+                @apply border-slate-900;
+              }
+            }
+
+            .radioInputContainer {
+              @apply space-y-2;
+
+              .radioInput {
+                @apply relative flex cursor-pointer items-center gap-x-4 rounded border border-slate-500 px-3 py-2 transition duration-300;
+
+                input {
+                  @apply invisible absolute opacity-0;
+                }
+
+                .customRadio {
+                  @apply flex h-4 w-4 items-center justify-center rounded-full border border-slate-900 transition duration-300;
+
+                  span {
+                    @apply invisible block rounded-full bg-lime opacity-0 transition duration-300;
+                    width: 0.6rem;
+                    height: 0.6rem;
+                  }
+                }
+
+                .radioName {
+                  @apply font-semibold text-slate-900;
+                }
+
+                &:hover {
+                  @apply border-lime;
+                }
+
+                &:has(input:checked) {
+                  @apply border-lime bg-lime/20;
+
+                  .customRadio {
+                    @apply border-lime;
+
+                    span {
+                      @apply visible opacity-100;
+                    }
+                  }
+                }
+              }
+            }
+
+            .errorText {
+              @apply flex min-h-0 items-end text-xs font-medium text-red transition-all duration-300 sm:text-sm;
+            }
+
+            &.error {
+              .input {
+                @apply border-red;
+                border-width: 1.5px;
+
+                .badge {
+                  @apply bg-red text-white;
+                }
+              }
+
+              .errorText {
+                @apply visible min-h-5 opacity-100 sm:min-h-7;
+              }
+            }
+          }
+
+          .flex_ {
+            @apply flex flex-col gap-5 sm:flex-row;
+
+            .field {
+              @apply sm:w-1/2;
+            }
+          }
+        }
+
+        .btn {
+          @apply mt-9 flex w-full items-center justify-center gap-x-2 rounded-full bg-lime px-8 py-3 font-semibold text-slate-900 transition duration-300 hover:enabled:bg-lime/60 disabled:bg-gray-300 sm:w-auto sm:justify-start;
+        }
+      }
+    }
+
+    .resultContainer {
+      @apply relative w-full overflow-hidden bg-slate-900 md:w-1/2 md:rounded-r-3xl;
+      border-bottom-left-radius: 4.5rem;
+      @media (width < $md) {
+        height: 30rem;
+        border-bottom-left-radius: 0;
+      }
+
+      .emptyResult {
+        @apply visible absolute bottom-0 flex h-full flex-col items-center justify-center p-5 opacity-100 transition-all duration-200 sm:p-9;
+
+        img {
+          @apply w-40;
+        }
+
+        .title {
+          @apply mt-2 block text-center text-xl font-semibold text-white;
+        }
+
+        .desc {
+          @apply mt-3 block text-center text-sm text-slate-300;
+        }
+
+        &.hide {
+          @apply invisible bottom-20 opacity-0;
+        }
+      }
+
+      .completedResult {
+        @apply invisible absolute top-20 p-5 opacity-0 transition-all duration-200 sm:p-9;
+
+        .title {
+          @apply block text-xl font-semibold text-white;
+        }
+
+        .desc {
+          @apply mt-4 block text-sm text-slate-300;
+        }
+
+        .resultBox {
+          @apply mt-7 rounded-md border-t-4 border-t-lime p-8;
+          background-color: hsl(202, 55%, 10%);
+
+          .key {
+            @apply block text-sm text-slate-300;
+          }
+
+          .heroValue {
+            @apply mt-3 block text-4xl font-semibold text-lime sm:text-5xl;
+          }
+
+          .line {
+            @apply my-6 border-none bg-slate-100 opacity-40;
+            height: 0.1px;
+          }
+
+          .subValue {
+            @apply mt-1 block text-lg text-slate-100;
+          }
+        }
+
+        &.show {
+          @apply visible top-0 opacity-100;
+        }
+      }
+    }
+  }
+}
