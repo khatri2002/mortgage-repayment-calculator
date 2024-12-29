@@ -61,9 +61,16 @@ $md: 768px;
                 @apply w-full flex-grow cursor-pointer rounded px-3 font-semibold text-slate-900 outline-none;
               }
 
-              &:hover,
-              &:focus-within {
+              &:hover {
                 @apply border-slate-900;
+              }
+
+              &:focus-within {
+                @apply border-lime;
+
+                .badge {
+                  @apply bg-lime;
+                }
               }
             }
 
