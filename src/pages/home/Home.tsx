@@ -162,9 +162,7 @@ const Home = () => {
                   [styles.error]: errors.mortgageType,
                 })}
               >
-                <label className={styles.label} htmlFor="mortgage-type">
-                  Mortgage Type
-                </label>
+                <label className={styles.label}>Mortgage Type</label>
                 <div className={styles.radioInputContainer}>
                   <label className={styles.radioInput} htmlFor="repayment">
                     <input
